@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Storefront Web
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
+A modern e-commerce storefront built with Next.js 14, TypeScript, and Tailwind CSS. Full-featured frontend for the [Storefront API](https://github.com/abdullahharoon-dev/storefront-api).
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS + shadcn/ui |
+| **State** | Zustand |
+| **Data Fetching** | TanStack Query (React Query) |
+| **HTTP Client** | Axios |
+| **Icons** | Lucide React |
+| **Payments** | Stripe Checkout |
+
+## Features
+
+- **Authentication** — Login, register, forgot password with JWT tokens
+- **Product Browsing** — Search, filters (category, brand, price), sorting, pagination
+- **Product Detail** — Image gallery, ratings, reviews, add to cart
+- **Shopping Cart** — Add/update/remove items, quantity controls, order summary
+- **Wishlist** — Save products for later
+- **Checkout** — Address selection, coupon codes, Stripe payment
+- **Order Tracking** — Order history, order details, status tracking
+- **User Profile** — Edit info, change password, avatar
+- **Admin Dashboard** — Revenue stats, order management, low stock alerts
+- **Responsive Design** — Mobile-first, works on all screen sizes
+- **Loading States** — Skeleton loaders throughout the app
+
+## Pages
+
+| Route | Description |
+|-------|------------|
+| `/` | Homepage with hero, categories, featured products |
+| `/products` | Product listing with search, filters, pagination |
+| `/products/:slug` | Product detail with gallery, reviews |
+| `/categories` | Browse all categories |
+| `/brands` | Browse all brands |
+| `/cart` | Shopping cart |
+| `/wishlist` | Saved products |
+| `/checkout` | Checkout flow |
+| `/orders` | Order history |
+| `/orders/:id` | Order detail |
+| `/profile` | User profile |
+| `/admin` | Admin dashboard |
+| `/login` | Sign in |
+| `/register` | Sign up |
+| `/forgot-password` | Password reset |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- [Storefront API](https://github.com/abdullahharoon-dev/storefront-api) running on `localhost:3000`
+
+### Setup
 
 ```bash
+# Clone the repository
+git clone https://github.com/abdullahharoon-dev/storefront-web.git
+cd storefront-web
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                  # Next.js App Router pages
+│   ├── (auth)/           # Auth pages (login, register, forgot-password)
+│   ├── products/         # Product listing and detail
+│   ├── cart/             # Shopping cart
+│   ├── checkout/         # Checkout flow
+│   ├── orders/           # Order history and detail
+│   ├── profile/          # User profile
+│   ├── admin/            # Admin dashboard
+│   └── ...
+├── components/
+│   ├── ui/               # shadcn/ui components
+│   ├── layout/           # Navbar, Footer, Providers
+│   ├── products/         # Product card, star rating
+│   └── reviews/          # Review form, review list
+├── hooks/                # React Query hooks
+├── stores/               # Zustand stores (auth, cart)
+├── lib/                  # API client, utilities
+└── types/                # TypeScript interfaces
+```
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Description |
+|---------|------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Description |
+|----------|------------|
+| `NEXT_PUBLIC_API_URL` | Backend API URL (default: `http://localhost:3000/api/v1`) |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe publishable key |
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
